@@ -1,52 +1,28 @@
-PARALLEL EXTENSION: <EXTENSION NAME, e.g. Double Buffer memory strategy>
+PARALLEL EXTENSION
 ==========================================================================
 
-Authors: <name (username)>, <name (username)>
+Authors: Tomoki Hara: Tomoki1204
 
 
 1. WHAT THIS EXTENSION IS
 -------------------------
-<1-3 sentences: which extension from the docs this is, and the idea behind it.>
-e.g. Workers write their rows directly into one of two boards allocated
-once at start-up, instead of allocating a new strip every turn.
-
+The first step implemented that every worker allocates new memory on a heap for each calculation result every goroutine.
+For the setp 2, two separated map are created at the beginning of the cumputation, and when the workers finish calculating they write down the results directly on the other map.
+[step3 explanation]
 
 2. HOW IT DIFFERS FROM THE PRIMARY IMPLEMENTATION
 -------------------------------------------------
-Primary (parallel.zip):   <e.g. heap allocation: each worker makes a new
-                           strip every turn and sends it back on a channel>
-This extension:           <e.g. two boards made once; workers write in place;
-                           distributor waits (WaitGroup / done channel), then swaps>
+Primary (parallel.zip):   heap allocation: each worker makes a new strip every turn and sends it back on a channel.
+This extension:           two boards made once -> workers write in place -> then swaps -> going back to the first step
 
-Files changed:
-  - <folder/file.go>: <what changed>
-  - <folder/file.go>: <what changed>
-
-Synchronisation:
-  <How workers and the distributor stay in step, and how races are avoided
-   (e.g. each worker writes only its own rows; ticker/'s' copy the board
-   under the mutex).>
-
-
-3. HOW TO BUILD AND RUN
------------------------
-1. Copy the files in this folder into a fresh copy of the skeleton,
-   replacing <gol/distributor.go>.
-2. From the project root:
-     go run .                          (normal run with SDL)
-     go test ./tests -v                (all tests)
-     go test ./tests -v -race          (race detector)
-     go test ./tests -bench . -benchmem   (benchmarks)
-
-
-4. TESTING
+3. TESTING
 ----------
-  - All tests pass:            <yes / no, list any failures>
-  - Passes with -race:         <yes / no>
-  - Tested thread counts:      <e.g. 1-16>
+  - All tests pass:            yes
+  - Passes with -race:         yes
+  - Tested thread counts:      1-16
 
 
-5. RESULTS SUMMARY
+4. RESULTS SUMMARY
 ------------------
 Machine: <CPU model, cores, RAM, OS>
 Image / turns: <e.g. 512x512, 1000 turns>
