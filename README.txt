@@ -6,8 +6,7 @@ Authors: Tomoki Hara: Tomoki1204
 
 1. WHAT THIS EXTENSION IS
 -------------------------
-The first step implemented that every worker allocates new memory on a heap for each calculation result every goroutine.
-For the setp 2, two separated map are created at the beginning of the cumputation, and when the workers finish calculating they write down the results directly on the other map.
+For the approach 2, two separated map are created at the beginning of the cumputation, and when the workers finish calculating they write down the results directly on the other map.
 [step3 explanation]
 
 2. HOW IT DIFFERS FROM THE PRIMARY IMPLEMENTATION
@@ -24,16 +23,12 @@ This extension:           two boards made once -> workers write in place -> then
 
 4. RESULTS SUMMARY
 ------------------
-Machine: <CPU model, cores, RAM, OS>
-Image / turns: <e.g. 512x512, 1000 turns>
+Machine: M2 chip MacBook: an 8-core CPU (4 performance + 4 efficiency)
+Image / turns: 512x512, 1000 turns
 
-  Threads | Primary time | Extension time | Primary allocs/op | Extension allocs/op
-  --------+--------------+----------------+-------------------+--------------------
-     1    |              |                |                   |
-     2    |              |                |                   |
-     4    |              |                |                   |
-     8    |              |                |                   |
-    16    |              |                |                   |
+
+
+
 
 Key finding: <1-2 sentences, e.g. far fewer allocations and less GC time;
 speed-up largest at high thread counts>. Full analysis is in report.pdf,
