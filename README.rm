@@ -30,6 +30,9 @@ Image / turns: 512x512, 1000 turns
 
 
 
+
+
+
 Key finding: <1-2 sentences, e.g. far fewer allocations and less GC time;
 speed-up largest at high thread counts>. Full analysis is in report.pdf,
 Section <N>.
