@@ -26,6 +26,7 @@ This extension:           two boards made once -> workers write in place -> then
 Machine: M2 chip MacBook: an 8-core CPU (4 performance + 4 efficiency)
 Image / turns: 512x512, 1000 turns
 
+<img width="1470" height="886" alt="extension_graph" src="https://github.com/user-attachments/assets/efcf1881-eeff-477f-831b-4a849c10fc43" /><img width="640" height="480" alt="extension_graph_2" src="https://github.com/user-attachments/assets/32499142-4b06-46eb-9e66-d1929548f7d2" />
 
 
 
