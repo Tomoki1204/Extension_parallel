@@ -26,20 +26,12 @@ This extension:           two boards made once -> workers write in place -> then
 Machine: M2 chip MacBook: an 8-core CPU (4 performance + 4 efficiency)
 Image / turns: 512x512, 1000 turns
 
-<img width="1470" height="886" alt="extension_graph" src="https://github.com/user-attachments/assets/efcf1881-eeff-477f-831b-4a849c10fc43" /><img width="640" height="480" alt="extension_graph_2" src="https://github.com/user-attachments/assets/32499142-4b06-46eb-9e66-d1929548f7d2" />
+Figures -> https://github.com/Tomoki1204/Figures_parallel_extension.git
 
-
-
-
-
-
-
-Key finding: <1-2 sentences, e.g. far fewer allocations and less GC time;
-speed-up largest at high thread counts>. Full analysis is in report.pdf,
-Section <N>.
+Figure 1 and 2 are the benchmark results for the parallel extension implementation, and 3 and 4 are the results for the parallel implementation. As the Figure 2 and 4 show, the overall runtime for the extension increases compared to the original version. However, in theory, extension version needs to be faster then the original version. Therefore, it can be concluded that the runtime can be heavily affected by the state of the local machine.
+Additionally, the figure 1 looks more stable then the figure 3 because the original parallel implementation allocate a new memory every time, but the extension version does not since it has two whole maps and swap them every time after finishing the calculation.
 
 
 6. KNOWN LIMITATIONS
 --------------------
-  - <e.g. ticker and 's' must copy the board, adding a small cost>
-  - <anything not finished or not tested>
+  - Comparison needed to be run at the same situation and state of the local machine.
